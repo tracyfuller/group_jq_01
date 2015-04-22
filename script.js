@@ -94,11 +94,21 @@ $(document).ready(function(){
 
 	$("#appleButton").on("click", function() {
 		var cost = fruitArray[0].price;
+			cost = roundCost(cost);
+		if (user.cash > cost){
 		user.apple[0]++;
 		user.apple[2]++;
 		user.apple[1]+= cost;
 		user.cash -= cost;
+		var average = (user.apple[1]/user.apple[0]);
+			average = roundCost(average);
 		$("#numApples").text("Apples: " + user.apple[0]);
+		$("#avgApples").text("Avg. Purchase Price: $" + average);
+		$("#userPurchases").text("Dollars Remaining: $" + user.cash);
+		} else{
+			alert("Please look for something cheaper!");
+		}
+		
 
 	});
 
@@ -125,11 +135,21 @@ $(document).ready(function(){
 
 	$("#pearButton").on("click", function() {
 		var cost = fruitArray[3].price;
+			cost = roundCost(cost);
+		if (user.cash > cost){
 		user.pear[0]++;
 		user.pear[2]++;
 		user.pear[1]+= cost;
 		user.cash -= cost;
+		var average = (user.pear[1]/user.pear[0]);
+			average = roundCost(average);
 		$("#numPears").text("Pears: " + user.pear[0]);
+		$("#avgPears").text("Avg. Purchase Price: $" + average);
+		$("#userPurchases").text("Dollars Remaining: $" + user.cash);
+		} else{
+			alert("Please look for something cheaper!");
+		}	
 
-	});
+	  });
+	
 	});
