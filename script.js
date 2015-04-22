@@ -2,6 +2,13 @@ function randomNumber(min, max) {
 	return Math.floor(Math.random() * (1 + max - min) + min);
 }
 
+function roundCost(average){
+	average *= 100;
+	average = Math.round(average);
+	average /= 100;
+	return average;
+}
+
 function Fruit (name) {
 	this.name = name;
 	this.price = randomNumber(50, 999)/100;
@@ -37,7 +44,7 @@ var user = {
 	orange: userOrange,
 	//grape: userGrape,
 	pear: userPear,
-	cash: 0
+	cash: 100
 };
 
 $(document).ready(function(){
@@ -58,11 +65,20 @@ $(document).ready(function(){
 
 	$("#bananaButton").on("click", function() {
 		var cost = fruitArray[2].price;
-		user.banana[0]++;
-		user.banana[2]++;
-		user.banana[1]+= cost;
-		user.cash -= cost;
-
+		cost = roundCost(cost);
+		if (user.cash > cost){
+			user.banana[0]++;
+			user.banana[2]++;
+			user.banana[1]+= cost;
+			user.cash -= cost;
+			var average = (user.banana[1]/user.banana[0]);
+			average = roundCost(average);
+			$("#numBananas").text("Bananas: " + user.banana[0]);
+			$("#avgBananas").text("Avg. Purchase Price: $" + average);
+			$("#userPurchases").text("Dollars Remaining: $" + user.cash);
+		} else{
+			alert("Please look for something cheaper!");
+		}		
 	});
 
 
@@ -82,17 +98,27 @@ $(document).ready(function(){
 		user.apple[2]++;
 		user.apple[1]+= cost;
 		user.cash -= cost;
-		console.log("I worked");
+		$("#numApples").text("Apples: " + user.apple[0]);
 
 	});
 
 
 	$("#orangeButton").on("click", function() {
 		var cost = fruitArray[1].price;
+			cost = roundCost(cost);
+		if (user.cash > cost){
 		user.orange[0]++;
 		user.orange[2]++;
 		user.orange[1]+= cost;
 		user.cash -= cost;
+		var average = (user.orange[1]/user.orange[0]);
+			average = roundCost(average);
+		$("#numOranges").text("Oranges: " + user.orange[0]);
+		$("#avgOranges").text("Avg. Purchase Price: $" + average);
+		$("#userPurchases").text("Dollars Remaining: $" + user.cash);
+		} else{
+			alert("Please look for something cheaper!");
+		}		
 
 	});
 
@@ -103,6 +129,7 @@ $(document).ready(function(){
 		user.pear[2]++;
 		user.pear[1]+= cost;
 		user.cash -= cost;
+		$("#numPears").text("Pears: " + user.pear[0]);
 
 	});
 	});
