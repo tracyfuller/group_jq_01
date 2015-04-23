@@ -81,6 +81,21 @@ $(document).ready(function(){
 		}		
 	});
 
+	$("#bananaSell").on("click", function() {
+		var cost = fruitArray[2].price;
+			cost = roundCost(cost);
+		if(user.banana[0] > 0) {
+			user.banana[0]--;
+			console.log(user.apple[0]);
+			user.cash += cost;
+			$("#numBananas").text("Bannas: " + user.apple[0]);
+			$("#userPurchases").text("Dollars Remaining: $" + user.cash);
+		} else {
+			alert("You don't have any bananas!");
+		}
+	});	
+
+
 
 	/*$("#grapeButton").on("click", function() {
 		var cost = fruitArray[3].price;
@@ -112,6 +127,20 @@ $(document).ready(function(){
 
 	});
 
+	$("#appleSell").on("click", function() {
+		var cost = fruitArray[0].price;
+			cost = roundCost(cost);
+		if(user.apple[0] > 0) {
+			user.apple[0]--;
+			console.log(user.apple[0]);
+			user.cash += cost;
+			$("#numApples").text("Apples: " + user.apple[0]);
+			$("#userPurchases").text("Dollars Remaining: $" + user.cash);
+		} else {
+			alert("You don't have any apples!");
+		}
+	});	
+
 
 	$("#orangeButton").on("click", function() {
 		var cost = fruitArray[1].price;
@@ -132,6 +161,21 @@ $(document).ready(function(){
 
 	});
 
+	$("#orangeSell").on("click", function() {
+		var cost = fruitArray[1].price;
+			cost = roundCost(cost);
+		if(user.orange[0] > 0) {
+			user.orange[0]--;
+			console.log(user.orange[0]);
+			user.cash += cost;
+			$("#numOranges").text("Oranges: " + user.orange[0]);
+			$("#userPurchases").text("Dollars Remaining: $" + user.cash);
+		} else {
+			alert("You don't have any oranges!");
+		}
+	});	
+
+
 
 	$("#pearButton").on("click", function() {
 		var cost = fruitArray[3].price;
@@ -151,5 +195,20 @@ $(document).ready(function(){
 		}	
 
 	  });
+
+	$("#pearSell").on("click", function() {
+		var cost = fruitArray[3].price;
+			cost = roundCost(cost);
+		if(user.pear[0] > 0) {
+			user.pear[0]--;
+			console.log(user.pear[0]);
+			user.cash += cost;
+			$("#numPears").text("Pears: " + user.apple[0]);
+			$("#userPurchases").text("Dollars Remaining: $" + user.cash);
+		} else {
+			alert("You don't have any pears!");
+		}
+	});	
+
 	
 	});
