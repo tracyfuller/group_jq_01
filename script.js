@@ -52,16 +52,23 @@ $(document).ready(function(){
 	$("#applesPrice").text(apples.price);
 	$("#pearsPrice").text(pears.price);
 	$("#orangesPrice").text(oranges.price);
-	setInterval(function (){
+
+	var j=0;
+
+	var timer = setInterval(function (){
 		for(var i = 0; i <fruitArray.length; i++){
 				fruitArray[i].changePrice();
 
 				$("#"+fruitArray[i].name+"Price").text(fruitArray[i].price);
 				//console.log("The price for " + fruitArray[i].name + " is " + fruitArray[i].price);
 			}
+		j++;
+		if (j == 3) {
+			clearInterval(timer);
+			sellOff(fruitArray, user);
+			console.log(user.pear[0]);
+			}
 		}, 5000);
-
-
 
 	$("#bananaButton").on("click", function() {
 		var cost = fruitArray[2].price;
@@ -209,6 +216,5 @@ $(document).ready(function(){
 			alert("You don't have any pears!");
 		}
 	});	
-
 	
 	});
