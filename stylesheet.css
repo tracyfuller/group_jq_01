@@ -1,9 +1,8 @@
 .column {
-	width: 150px;
+	width: 200px;
 	display: table-cell;
 }
 .fruitImage {
-	width: 100px;
 	display: inline;
 }
 
@@ -13,7 +12,6 @@
        background-color: #AAAAAA;
        border-radius: 15px;
        font: 12px Verdana, Sans-Serif;
-       margin: 0 auto;
        text-align: center;
        cursor: pointer;
 }

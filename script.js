@@ -15,7 +15,7 @@ function Fruit (name) {
 }
 
 Fruit.prototype.changePrice = function () {
-	this.price += randomNumber(-50, 50) / 100;
+	this.price += randomNumber(-25, 25) / 100;
 	this.price = Math.round(100*this.price)/100;
 	if (this.price > 9.99) {
 		this.price = 9.99;
@@ -44,7 +44,7 @@ var user = {
 	orange: userOrange,
 	//grape: userGrape,
 	pear: userPear,
-	cash: 100
+	cash: 50
 };
 
 $(document).ready(function(){
@@ -93,9 +93,9 @@ $(document).ready(function(){
 			cost = roundCost(cost);
 		if(user.banana[0] > 0) {
 			user.banana[0]--;
-			console.log(user.apple[0]);
+			console.log(user.banana[0]);
 			user.cash += cost;
-			$("#numBananas").text("Bannas: " + user.apple[0]);
+			$("#numBananas").text("Bannas: " + user.banana[0]);
 			$("#userPurchases").text("Dollars Remaining: $" + user.cash);
 		} else {
 			alert("You don't have any bananas!");
@@ -210,7 +210,7 @@ $(document).ready(function(){
 			user.pear[0]--;
 			console.log(user.pear[0]);
 			user.cash += cost;
-			$("#numPears").text("Pears: " + user.apple[0]);
+			$("#numPears").text("Pears: " + user.pear[0]);
 			$("#userPurchases").text("Dollars Remaining: $" + user.cash);
 		} else {
 			alert("You don't have any pears!");
